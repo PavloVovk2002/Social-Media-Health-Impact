@@ -9,6 +9,4 @@ for column in df.columns:
   missing_values = df[column].isnull().sum()
   print(f"Column '{column}' has {missing_values} missing value(s).")
 
-
-
-#hello
+pd.read()
