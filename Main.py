@@ -4,9 +4,12 @@ import random
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
-df = pd.read_csv('Social-Media-Health-Impact/Main/Mental_Health_Survey_Feb_20_22.csv')
-for column in df.columns:
-  missing_values = df[column].isnull().sum()
-  print(f"Column '{column}' has {missing_values} missing value(s).")
+data_df = pd.read_csv('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
 
-pd.read()
+#Clean
+data_df = data_df.drop(columns=['Likes Received (per post)'])
+
+print(data_df.head())
+
+
+#Plots
