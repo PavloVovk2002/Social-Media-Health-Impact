@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 
-#data_df = pd.read_csv('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
+data_df = pd.read_csv('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
 #data_df = pd.read_csv('/Users/gopivaghani/Documents)
 #data_df = pd.read_csv('/Users/amaankhan/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
 
@@ -159,9 +159,3 @@ data_df['Sklearn Cluster'] = sklearn_clusters
 # Display sklearn SSE
 sklearn_sse = sklearn_kmeans.inertia_
 print(f"Sklearn KMeans SSE for k={k}: {sklearn_sse}")
-
-# Additional Visualization and Analysis
-sns.scatterplot(x='Daily SM Usage (hrs)', y='Social Anxiety Level (1-10)', hue='Sklearn Cluster', data=data_df, palette='coolwarm')
-plt.title(f'Sklearn KMeans Clustering (k={k})')
-plt.ylim(0, 15)
-plt.show()
