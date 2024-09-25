@@ -29,7 +29,7 @@ plt.title('Daily SM Usage Across Age Groups')
 plt.figure(figsize=(12, 6))
 sns.countplot(x='Most Used SM Platform', 
               hue='Gender', 
-              data=data_df, 
+              data=data_df,
               palette='pastel') 
 
 plt.title('Most Used SM Platform by Gender', fontsize=16)
