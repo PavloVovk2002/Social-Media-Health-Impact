@@ -79,6 +79,7 @@ plt.title('Peer Comparison Frequency vs. Self Confidence Impact')
 
 
 
+# Cluster
 
 columns_to_cluster = ['Daily SM Usage (hrs)', 'Peer Comparison Frequency (1-10)', 
                       'Social Anxiety Level (1-10)', 'Self Confidence Impact (1-10)']
