@@ -29,10 +29,10 @@ plt.show()
 
 #2 Which platform is the most used by gender?
 plt.figure(figsize=(12, 6))
-sns.countplot(x='Most Used SM Platform',
-              hue='Gender',
+sns.countplot(x='Most Used SM Platform', 
+              hue='Gender', 
               data=data_df,
-              palette='pastel')
+              palette='pastel') 
 
 plt.title('Most Used SM Platform by Gender', fontsize=16)
 plt.xlabel('Social Media Platform', fontsize=14)
