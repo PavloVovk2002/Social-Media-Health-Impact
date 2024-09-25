@@ -5,8 +5,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
-data_df = pd.read_csv('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
-#data_df = pd.read_csv
 #data_df = pd.read_csv
 
 #Clean
