@@ -6,14 +6,16 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
 #data_df = pd.read_csv('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
-data_df = pd.read_csv('/Users/gopivaghani/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
+#data_df = pd.read_csv('/Users/gopivaghani/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
 #data_df = pd.read_csv('/Users/amaankhan/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
 
-
 #Clean
-data_df = data_df.drop(columns=['Likes Received (per post)'])
 
-print(data_df.head())
+#Missing Values
+missing_count_per_column = data_df.isna().sum()
+
+print("Missing values per column:")
+print(missing_count_per_column)
 
 
 #Plots
@@ -53,3 +55,5 @@ plt.show()
 data_df.groupby('Age Group')['Self Confidence Impact (1-10)'].mean().plot(kind='bar')
 plt.title('Average Self Confidence Impact by Age Group')
 plt.show()
+
+# How does the likes received on a post impact the peer comparsion level?
