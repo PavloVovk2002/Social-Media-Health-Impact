@@ -63,25 +63,46 @@ sns.scatterplot(x='Peer Comparison Frequency (1-10)', y='Self Confidence Impact 
 plt.title('Peer Comparison Frequency vs. Self Confidence Impact')
 
 #11 What is the correlation between socioeconomic status and social anxiety levels?
+sns.boxplot(x='Socioeconomic Status', y='Social Anxiety Level (1-10)', data=data)
+plt.title('Social Anxiety Level by Socioeconomic Status')
 
 #12 Does daily social media usage vary significantly between different education levels?
+sns.boxplot(x='Education Level', y='Daily SM Usage (hrs)', data=data)
+plt.title('Daily Social Media Usage by Education Level')
 
 #13 How do peer comparison frequencies differ across countries?
+sns.boxplot(x='Country', y='Peer Comparison Frequency (1-10)', data=data)
+plt.xticks(rotation=90)
+plt.title('Peer Comparison Frequency by Country')
 
 #14 What is the relationship between the number of likes received and social anxiety levels?
+sns.scatterplot(x='Likes Received (per post)', y='Social Anxiety Level (1-10)', data=data)
+plt.title('Likes Received vs Social Anxiety Level')
 
 #15 How does body image impact scores vary across different age groups and genders?
+sns.boxplot(x='Age Group', y='Body Image Impact (1-10)', hue='Gender', data=data)
+plt.title('Body Image Impact by Age Group and Gender')
 
 #16 Is there a significant difference in sleep quality impact between users who frequently experience cyberbullying and those who don’t?
+sns.boxplot(x='Cyberbullying Experience (1-10)', y='Sleep Quality Impact (1-10)', data=data)
+plt.title('Sleep Quality Impact by Cyberbullying Experience')
 
 #17 How does the frequency of social media usage impact self-confidence across different socioeconomic statuses?
+sns.boxplot(x='Socioeconomic Status', y='Self Confidence Impact (1-10)', data=data)
+plt.title('Self Confidence Impact by Socioeconomic Status')
 
 #18 Which country has the highest body image impact score?
+sns.boxplot(x='Country', y='Body Image Impact (1-10)', data=data)
+plt.xticks(rotation=90)
+plt.title('Body Image Impact by Country')
 
 #19 How does the number of comments received on posts affect social anxiety levels?
+sns.scatterplot(x='Comments Received (per post)', y='Social Anxiety Level (1-10)', data=data)
+plt.title('Comments Received vs Social Anxiety Level')
 
 #20 What is the relationship between anxiety levels and the number of shares received per post?
-
+sns.scatterplot(x='Shares Received (per post)', y='Anxiety Levels (1-10)', data=data)
+plt.title('Shares Received vs Anxiety Levels')
 
 # Cluster
 
