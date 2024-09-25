@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 
-data_df = pd.read_csv('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
+#data_df = pd.read_csv('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
 #data_df = pd.read_csv('/Users/gopivaghani/Documents)
 #data_df = pd.read_csv('/Users/amaankhan/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
 
@@ -190,23 +190,19 @@ plt.show()
 #   plt.title('Body Image Impact by Country')
 
 #29 How does the number of comments received on posts affect social anxiety levels?
-plt.figure(figsize=(12, 6))
-sns.scatterplot(x='Comments Received (per post)', y='Social Anxiety Level (1-10)', data=data_df, color='blue', alpha=0.6)
+#   sns.scatterplot(x='Comments Received (per post)', y='Social Anxiety Level (1-10)', data=data_df)
+#   plt.title('Comments Received vs Social Anxiety Level')
 
-sns.regplot(x='Comments Received (per post)', y='Social Anxiety Level (1-10)', data=data_df, scatter=False, color='red')
+#30 What is the average social anxiety levels by number of comments recieved?
+bins = [0, 5, 10, 20, 50, 100, 200]
+labels = ['0-5', '6-10', '11-20', '21-50', '51-100', '101-200']
+data_df['Comments Binned'] = pd.cut(data_df['Comments Received (per post)'], bins=bins, labels=labels)
 
-plt.title('Comments Received vs Social Anxiety Level', fontsize=16)
-plt.xlabel('Comments Received (per post)', fontsize=14)
-plt.ylabel('Social Anxiety Level (1-10)', fontsize=14)
+average_anxiety = data_df.groupby('Comments Binned')['Social Anxiety Level (1-10)'].mean()
 
-plt.xlim(0, data_df['Comments Received (per post)'].max() + 10)
-plt.ylim(0, 11)
+plt.figure(figsize=(8, 8))
+plt.pie(average_anxiety, labels=average_anxiety.index, autopct='%1.1f%%', startangle=140, colors=sns.color_palette("Set2"))
+plt.title('Average Social Anxiety Levels by Number of Comments Received', fontsize=16)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
-plt.grid(True, linestyle='--', alpha=0.7)
-
-plt.tight_layout()
 plt.show()
-
-#30 What is the relationship between anxiety levels and the number of shares received per post?
-#   sns.scatterplot(x='Shares Received (per post)', y='Anxiety Levels (1-10)', data=data_df)
-#   plt.title('Shares Received vs Anxiety Levels')
