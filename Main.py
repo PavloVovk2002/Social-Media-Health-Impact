@@ -166,17 +166,17 @@ plt.show()
 
 #26 Is there a significant difference in sleep quality impact between users who frequently experience cyberbullying and those who don’t?
 plt.figure(figsize=(12, 6))
-sns.boxplot(x='Cyberbullying Experience (1-10)', y='Sleep Quality Impact (1-10)', data=data_df, palette='Set2')
-
+sns.boxplot(x='Cyberbullying Experience (1-10)', y='Sleep Quality Impact (1-10)', hue='Gender', data=data_df, palette='Set2')
 plt.title('Sleep Quality Impact by Cyberbullying Experience', fontsize=16)
 plt.xlabel('Cyberbullying Experience (1-10)', fontsize=14)
 plt.ylabel('Sleep Quality Impact (1-10)', fontsize=14)
 
 plt.xlim(-1, 10)
 plt.ylim(0, 11)
-plt.grid(axis='y', linestyle='--', alpha=0.7)
 
-plt.xticks(rotation=0)
+plt.grid(True, linestyle='--', alpha=0.7)
+
+plt.legend(title='Gender')
 plt.tight_layout()
 plt.show()
 
@@ -190,8 +190,22 @@ plt.show()
 #   plt.title('Body Image Impact by Country')
 
 #29 How does the number of comments received on posts affect social anxiety levels?
-#   sns.scatterplot(x='Comments Received (per post)', y='Social Anxiety Level (1-10)', data=data_df)
-#   plt.title('Comments Received vs Social Anxiety Level')
+plt.figure(figsize=(12, 6))
+sns.scatterplot(x='Comments Received (per post)', y='Social Anxiety Level (1-10)', data=data_df, color='blue', alpha=0.6)
+
+sns.regplot(x='Comments Received (per post)', y='Social Anxiety Level (1-10)', data=data_df, scatter=False, color='red')
+
+plt.title('Comments Received vs Social Anxiety Level', fontsize=16)
+plt.xlabel('Comments Received (per post)', fontsize=14)
+plt.ylabel('Social Anxiety Level (1-10)', fontsize=14)
+
+plt.xlim(0, data_df['Comments Received (per post)'].max() + 10)
+plt.ylim(0, 11)
+
+plt.grid(True, linestyle='--', alpha=0.7)
+
+plt.tight_layout()
+plt.show()
 
 #30 What is the relationship between anxiety levels and the number of shares received per post?
 #   sns.scatterplot(x='Shares Received (per post)', y='Anxiety Levels (1-10)', data=data_df)
