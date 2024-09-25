@@ -32,11 +32,3 @@ Future Analysis Questions
 3. What role does socioeconomic status play in mediating the mental health impact of social media use?
 4. Can we predict mental health outcomes (e.g., high anxiety levels) using a combination of social media usage patterns and demographic data?
 5. How do sleep quality and social media usage interact across different genders and age groups?
-
-
-Clustering
-We applied both custom and `sklearn` KMeans clustering to segment the data based on variables like:
-- Daily Social Media Usage
-- Peer Comparison Frequency
-- Social Anxiety Levels
-- Self-Confidence Impact
