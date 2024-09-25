@@ -9,10 +9,13 @@ data_df = pd.read_csv('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Imp
 #data_df = pd.read_csv
 #data_df = pd.read_csv
 
-
 #Clean
-#data_df = data_df.drop(columns=['Likes Received (per post)'])
-#print(data_df.head())
+
+#Missing Values
+missing_count_per_column = data_df.isna().sum()
+
+print("Missing values per column:")
+print(missing_count_per_column)
 
 
 #Plots
