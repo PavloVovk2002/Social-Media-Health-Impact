@@ -1,0 +1,6 @@
+Look for similarities among the data that was clustered. 
+Does it indicate anything interesting were any meaningful clusters found?
+
+The cluster is set on a horizontal line going through a numerical nubmer of 1-10. 
+Unfortunatly, for this dataset, a cluster is not much help is the data is not based on location. 
+And although we do have a column for different countries and state, the outcome would be the same since the numirics are still 1-10.  
