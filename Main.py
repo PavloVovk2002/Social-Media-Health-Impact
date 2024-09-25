@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 
-#data_df = pd.read_csv('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
+data_df = pd.read_csv('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
 #data_df = pd.read_csv('/Users/gopivaghani/Documents)
 #data_df = pd.read_csv('/Users/amaankhan/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
 
@@ -26,8 +26,22 @@ print(missing_count_per_column)
 #   plt.title('Daily SM Usage Across Age Groups')
 
 #2 Which platform is the most used by gender?
-#   sns.countplot(x='Most Used SM Platform', hue='Gender', data=data_df)
-#   plt.title('Most Used SM Platform by Gender')
+plt.figure(figsize=(12, 6))
+sns.countplot(x='Most Used SM Platform', 
+              hue='Gender', 
+              data=data_df, 
+              palette='pastel') 
+
+plt.title('Most Used SM Platform by Gender', fontsize=16)
+plt.xlabel('Social Media Platform', fontsize=14)
+plt.ylabel('Count', fontsize=14)
+
+plt.xlim(-0.5, len(data_df['Most Used SM Platform'].unique()) - 0.5)
+plt.ylim(33000, 35000)
+
+plt.grid(axis='y')
+plt.legend(title='Gender')
+plt.show()
 
 #3 How do daily social media usage hours vary between urban and rural areas?
 #   sns.boxplot(x='Urban/Rural', y='Daily SM Usage (hrs)', data=data_df)
@@ -38,8 +52,18 @@ print(missing_count_per_column)
 #   plt.title('Average Social Anxiety Level by Country')
 
 #5 Is there a relationship between peer comparison frequency and social anxiety?
-#   sns.scatterplot(x='Peer Comparison Frequency (1-10)', y='Social Anxiety Level (1-10)', data=data_df)
-#   plt.title('Peer Comparison Frequency vs. Social Anxiety Level')
+data_df = data_df.sort_values(by='Peer Comparison Frequency (1-10)')
+plt.figure(figsize=(10, 6))
+sns.lineplot(x='Peer Comparison Frequency (1-10)', 
+             y='Social Anxiety Level (1-10)', 
+             data=data_df, 
+             marker='o')
+plt.title('Relationship Between Peer Comparison Frequency and Social Anxiety Level', fontsize=16)
+plt.xlabel('Peer Comparison Frequency (1-10)', fontsize=14)
+plt.ylabel('Social Anxiety Level (1-10)', fontsize=14)
+plt.xticks(range(1, 11))
+plt.grid(True)
+plt.show()
 
 #6 How does the frequency of cyberbullying vary by country?
 #   sns.boxplot(x='Country', y='Cyberbullying Experience (1-10)', data=data_df)
