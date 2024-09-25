@@ -62,13 +62,13 @@ plt.title('Self Confidence Impact by Platform')
 sns.scatterplot(x='Peer Comparison Frequency (1-10)', y='Self Confidence Impact (1-10)', data=data_df)
 plt.title('Peer Comparison Frequency vs. Self Confidence Impact')
 
-#1What is the correlation between socioeconomic status and social anxiety levels?
-#2.	Does daily social media usage vary significantly between different education levels?
-#3.	How do peer comparison frequencies differ across countries?
-#4.	What is the relationship between the number of likes received and social anxiety levels?
-#5.	How does the body image impact score vary across different age groups and genders?
-#6.	Is there a significant difference in sleep quality impact between users who frequently experience cyberbullying and those who don’t?
-#7.	How does the frequency of social media usage impact self-confidence across different socioeconomic statuses?
-#8.	Which country has the highest body image impact score?
-#9.	How does the number of comments received on posts affect social anxiety levels?
-#10.What is the relationship between anxiety levels and the number of shares received per post?
+#What is the correlation between socioeconomic status and social anxiety levels?
+#Does daily social media usage vary significantly between different education levels?
+#How do peer comparison frequencies differ across countries?
+#What is the relationship between the number of likes received and social anxiety levels?
+#How does body image impact scores vary across different age groups and genders?
+#Is there a significant difference in sleep quality impact between users who frequently experience cyberbullying and those who don’t?
+#How does the frequency of social media usage impact self-confidence across different socioeconomic statuses?
+#Which country has the highest body image impact score?
+#How does the number of comments received on posts affect social anxiety levels?
+#What is the relationship between anxiety levels and the number of shares received per post?
