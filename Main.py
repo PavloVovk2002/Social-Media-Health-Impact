@@ -34,7 +34,7 @@ plt.title('Daily SM Usage in Urban vs. Rural Areas')
 plt.show()
 
 # Which country has the highest average social anxiety level?
-data_df.groupby('Country')['Social Anxiety Level (1-10)'].mean().sort_values().plot(kind='bar
+data_df.groupby('Country')['Social Anxiety Level (1-10)'].mean().sort_values().plot(kind='bar')
 plt.title('Average Social Anxiety Level by Country')
 plt.show()
 
