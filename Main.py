@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 
-#data_df = pd.read_csv('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
+data_df = pd.read_csv('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
 #data_df = pd.read_csv('/Users/gopivaghani/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
 #data_df = pd.read_csv('/Users/amaankhan/Documents/GitHub/Social-Media-Health-Impact/South_East_Asia_Social_Media_MentalHealth.csv')
 
@@ -22,8 +22,8 @@ print(missing_count_per_column)
 #Plots
 
 #1 What is the distribution of daily social media usage across different age groups?
-sns.boxplot(x='Age Group', y='Daily SM Usage (hrs)', data=data_df)
-plt.title('Daily SM Usage Across Age Groups')
+#   sns.boxplot(x='Age Group', y='Daily SM Usage (hrs)', data=data_df)
+#   plt.title('Daily SM Usage Across Age Groups')
 
 #2 Which platform is the most used by gender?
 plt.figure(figsize=(12, 6))
@@ -44,12 +44,12 @@ plt.legend(title='Gender')
 
 
 #3 How do daily social media usage hours vary between urban and rural areas?
-sns.boxplot(x='Urban/Rural', y='Daily SM Usage (hrs)', data=data_df)
-plt.title('Daily SM Usage in Urban vs. Rural Areas')
+#   sns.boxplot(x='Urban/Rural', y='Daily SM Usage (hrs)', data=data_df)
+#   plt.title('Daily SM Usage in Urban vs. Rural Areas')
 
 #4 Which country has the highest average social anxiety level?
-data_df.groupby('Country')['Social Anxiety Level (1-10)'].mean().sort_values().plot(kind='bar')
-plt.title('Average Social Anxiety Level by Country')
+#   data_df.groupby('Country')['Social Anxiety Level (1-10)'].mean().sort_values().plot(kind='bar')
+#   plt.title('Average Social Anxiety Level by Country')
 
 #5 Is there a relationship between peer comparison frequency and social anxiety?
 data_df = data_df.sort_values(by='Peer Comparison Frequency (1-10)')
@@ -66,61 +66,61 @@ plt.grid(True)
 
 
 #6 How does the frequency of cyberbullying vary by country?
-sns.boxplot(x='Country', y='Cyberbullying Experience (1-10)', data=data_df)
-plt.title('Cyberbullying Experience by Country')
-plt.xticks(rotation=90)
+#   sns.boxplot(x='Country', y='Cyberbullying Experience (1-10)', data=data_df)
+#   plt.title('Cyberbullying Experience by Country')
+#   plt.xticks(rotation=90)
 
 #7 What is the average self-confidence impact score across different age groups?
-data_df.groupby('Age Group')['Self Confidence Impact (1-10)'].mean().plot(kind='bar')
-plt.title('Average Self Confidence Impact by Age Group')
+#   data_df.groupby('Age Group')['Self Confidence Impact (1-10)'].mean().plot(kind='bar')
+#   plt.title('Average Self Confidence Impact by Age Group')
 
 #8 What is the relationship between anxiety levels and sleep quality impact?
-sns.scatterplot(x='Anxiety Levels (1-10)', y='Sleep Quality Impact (1-10)', data=data_df)
-plt.title('Anxiety Levels vs. Sleep Quality Impact')
+#   sns.scatterplot(x='Anxiety Levels (1-10)', y='Sleep Quality Impact (1-10)', data=data_df)
+#   plt.title('Anxiety Levels vs. Sleep Quality Impact')
 
 #9 Which platform has the most impact on self-confidence levels?
-sns.boxplot(x='Most Used SM Platform', y='Self Confidence Impact (1-10)', data=data_df)
-plt.title('Self Confidence Impact by Platform')
+#   sns.boxplot(x='Most Used SM Platform', y='Self Confidence Impact (1-10)', data=data_df)
+#   plt.title('Self Confidence Impact by Platform')
 
 #10 How does peer comparison frequency affect self-confidence?
-sns.scatterplot(x='Peer Comparison Frequency (1-10)', y='Self Confidence Impact (1-10)', data=data_df)
-plt.title('Peer Comparison Frequency vs. Self Confidence Impact')
+#   sns.scatterplot(x='Peer Comparison Frequency (1-10)', y='Self Confidence Impact (1-10)', data=data_df)
+#   plt.title('Peer Comparison Frequency vs. Self Confidence Impact')
 
 #11 How does the most used social media platform differ between various countries?
-sns.boxplot(x='Country', y='Most Used SM Platform', data=data_df)
-plt.title('Most Used Social Media Platform by Country')
+#   sns.boxplot(x='Country', y='Most Used SM Platform', data=data_df)
+#   plt.title('Most Used Social Media Platform by Country')
 
 #12 How does the number of likes received on a post impact the peer comparison frequency?
-sns.scatterplot(x='Likes Received (per post)', y='Peer Comparsion Frequency (1-10)', data=data_df)
-plt.title('Likes Received vs. Peer Comparsion Frequency')
+#   sns.scatterplot(x='Likes Received (per post)', y='Peer Comparsion Frequency (1-10)', data=data_df)
+#   plt.title('Likes Received vs. Peer Comparsion Frequency')
 
 #13 How does the frequency of social media usage correlate with the age groups?
-sns.scatterplot(x='Frequency of SM Use', y='Age Group', data=data_df)
-plt.title('Frequency Social Media Usage vs. Age Groups')
+#   sns.scatterplot(x='Frequency of SM Use', y='Age Group', data=data_df)
+#   plt.title('Frequency Social Media Usage vs. Age Groups')
 
 #14 What is the relationship between comments received on a post and self confidence level?
-sns.scatterplot(x='Comments Received (per post)', y='Self Confidenece Impact (1-10)', data=data_df)
-plt.title('Comments Received vs. Self Confidence Impact')
+#   sns.scatterplot(x='Comments Received (per post)', y='Self Confidenece Impact (1-10)', data=data_df)
+#   plt.title('Comments Received vs. Self Confidence Impact')
 
 #15 Which state has the highest cyberbullying experience?
-data_df.groupby('State')['Cyberbullying Experience'].mean().sort_values().plot(kind='bar')
-plt.title('Cyberbullying Experience by State')
+#   data_df.groupby('State')['Cyberbullying Experience'].mean().sort_values().plot(kind='bar')
+#   plt.title('Cyberbullying Experience by State')
 
 #16 How does the average social anxiety level differ between age groups?
-sns.boxplot(x='Age Group', y='Social Anxiety Level (1-10)', data=data_df)
-plt.title('Social Anxiety Level by Age Groups')
+#   sns.boxplot(x='Age Group', y='Social Anxiety Level (1-10)', data=data_df)
+#   plt.title('Social Anxiety Level by Age Groups')
 
 #17 What is the distribution of the most used social media platform between urban and rural areas?
-sns.boxplot(x='Urban/Rural', y='Most Used SM Platform', data=data_df)
-plt.title('Most Used Social Media Platform in Urban vs. Rural')
+#   sns.boxplot(x='Urban/Rural', y='Most Used SM Platform', data=data_df)
+#   plt.title('Most Used Social Media Platform in Urban vs. Rural')
 
 #18 How does cyberbullying experience impact the self confidence level?
-sns.scatterplot(x='Cyberbullying Experience', y='Self Confidence Impact (1-10)', data=data_df)
-plt.title('Cyberbullying Experience vs Self Confidence Impact')
+#   sns.scatterplot(x='Cyberbullying Experience', y='Self Confidence Impact (1-10)', data=data_df)
+#   plt.title('Cyberbullying Experience vs Self Confidence Impact')
 
 #19  What is the relationship between peer comparison frequency and sleep quality impact?
-sns.scatterplot(x='Peer Comparison Frequency', y='Sleep Quality Impact(1-10)', data=data_df)
-plt.title('Peer Comparison Frequency vs Sleep Quality Impact')
+#   sns.scatterplot(x='Peer Comparison Frequency', y='Sleep Quality Impact(1-10)', data=data_df)
+#   plt.title('Peer Comparison Frequency vs Sleep Quality Impact')
 
 #20 What are the average anxiety levels across various age groups?
 average_anxiety = data_df.groupby('Age Group')['Anxiety Levels (1-10)'].mean()
