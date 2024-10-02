@@ -5,6 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
+from notebooks.src import *
 
 columns_to_cluster = ['Daily SM Usage (hrs)', 'Peer Comparison Frequency (1-10)', 
                       'Social Anxiety Level (1-10)', 'Self Confidence Impact (1-10)']
