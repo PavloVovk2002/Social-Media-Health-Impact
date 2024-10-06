@@ -9,19 +9,11 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from src.utils import load_data
 
-# Load the data
-data_df = load_data('/Users/pavlovovk/Documents/GitHub/Social-Media-Health-Impact/notebooks/data/raw/South_East_Asia_Social_Media_MentalHealth.csv')
-
-# Clean the data
-cleaned_data = clean_data(data_df)
-
-#Plots
-
-#1 What is the distribution of daily social media usage across different age groups?
+#1 What is the distribution of daily social media usage across different age groups?, 3, 22
 sns.boxplot(x='Age Group', y='Daily SM Usage (hrs)', data=data_df)
 plt.title('Daily SM Usage Across Age Groups')
 
-#2 Which platform is the most used by gender?
+#2 Which platform is the most used by gender? 
 plt.figure(figsize=(12, 6))
 sns.countplot(x='Most Used SM Platform', 
               hue='Gender', 
@@ -85,7 +77,7 @@ sns.boxplot(x='Country', y='Most Used SM Platform', data=data_df)
 plt.title('Most Used Social Media Platform by Country')
 
 #12 How does the number of likes received on a post impact the peer comparison frequency?
-sns.scatterplot(x='Likes Received (per post)', y='Peer Comparsion Frequency (1-10)', data=data_df)
+sns.scatterplot(x='Likes Received (per post)', y='Peer Comparison Frequency (1-10)', data=data_df)
 plt.title('Likes Received vs. Peer Comparsion Frequency')
 
 #13 How does the frequency of social media usage correlate with the age groups?
@@ -189,7 +181,7 @@ bins = [0, 5, 10, 20, 50, 100, 200]
 labels = ['0-5', '6-10', '11-20', '21-50', '51-100', '101-200']
 data_df['Comments Binned'] = pd.cut(data_df['Comments Received (per post)'], bins=bins, labels=labels)
 
-average_anxiety = data_df.groupby('Comments Binned')['Social Anxiety Level (1-10)'].mean()
+average_anxiety = data_df.groupby(data_df['Comments Binned'])['Social Anxiety Level (1-10)'].mean()
 
 plt.figure(figsize=(8, 8))
 plt.pie(average_anxiety, labels=average_anxiety.index, autopct='%1.1f%%', startangle=140, colors=sns.color_palette("Set2"))
