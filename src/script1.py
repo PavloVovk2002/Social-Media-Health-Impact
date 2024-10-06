@@ -7,7 +7,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
-from src.utils import load_data
 
 #1 What is the distribution of daily social media usage across different age groups?, 3, 22
 sns.boxplot(x='Age Group', y='Daily SM Usage (hrs)', data=data_df)
