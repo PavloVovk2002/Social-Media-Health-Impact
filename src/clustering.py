@@ -17,7 +17,7 @@ class CustomKMeans:
         self.k = k
         self.max_iters = max_iters
         self.tol = tol
-        self.centroids = None
+        self.centroids = None 
         self.cluster_assignments = None
 
     def initialize_centroids(self, df):
