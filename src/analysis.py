@@ -215,123 +215,44 @@ print(most_used_social_media_platform)
 sns.lineplot(x='Shares Received (per post)', y='State', data=data_df)
 plt.title('Shares Received on post by state')
 
-#4  What age group experience peer comparison the most?
-plt.figure(figsize=(10, 6))
-sns.boxplot(x='State', y='Body Image Impact (1-10)', data=data_df)
-plt.title('Body Image Impact by State and Region')
-plt.xlabel('State')
-plt.ylabel('Body Image Impact (1-10)')
+#5  What age group experience peer comparison the most? 
+#6  How often does a person with a certain socioeconomic status use social media? 
+#7  How do education levels within different states affect social media usage patterns? 
+#8  How does body image impact scores differ by state and region? 
+#9  What is the state-wise distribution of sleep quality impact from social media use? 
+#10 Are there significant differences in social media addiction rates across different countries? 
+#11 How does the frequency of social media use vary across people living in urban and rural areas? 
+#12 What is the correlation between self-confidence impact and anxiety level? 
+#13 How does self-confidence level affect sleep quality? 
+#14 Which states have the highest proportions of daily social media users compared to monthly users? 
+#15 Which regions show the most diversity in terms of the number of social media platforms used? 
+#16 Which states experience the highest frequency of cyberbullying on social media? 
+#17 How do different states report the impact of social media usage on physical health, such as sleep deprivation or sedentary behavior? 
+#18 How do anxiety levels vary by education level among social media users?
 
-#5  How often does a person with a certain socioeconomic status use social media? 
-plt.figure(figsize=(10, 6))
-sns.boxplot(x='State', y='Sleep Quality Impact (1-10)', data=data_df)
-plt.title('State-wise Distribution of Sleep Quality Impact')
-plt.xlabel('State')
+#19 How does socioeconomic status influence the likelihood of experiencing anxiety due to social media?
+sns.countplot(x='Anxiety Levels (1-10)', hue='Socioeconomic Status', data=data_df, palette='pastel') 
+plt.title('Socioeconomic Status vs Anxiety Level by Gender')
 
-#6  How do education levels within different states affect social media usage patterns? 
-plt.figure(figsize=(10, 6))
-sns.boxplot(x='Country', y='Daily SM Usage (hrs)', data=data_df)
-plt.title('Social Media Addiction Rates by Country')
-plt.xlabel('Country')
-plt.ylabel('Daily Social Media Usage (hrs)')
+#20 How does the frequency of social media use differ between urban and rural areas?
+sns.boxplot(x='Frequency of SM Use', y='Urban/Rural', data=data_df)
+plt.xticks(rotation=90)
+plt.title('Frequency of SM Use vs Urban/Rural')
 
-#7  How does body image impact scores differ by state and region?
-plt.figure(figsize=(10, 6))
-sns.violinplot(x='Urban/Rural', y='Daily SM Usage (hrs)', data=data_df)
-plt.title('Social Media Usage by Urban vs. Rural Areas')
-plt.xlabel('Urban/Rural')
-plt.ylabel('Daily Social Media Usage (hrs)')
+#21 Is there a significant relationship between the number of like received on posts and anxiety levels?
+bins = [0, 5, 10, 20, 50, 100, 200]
+labels = ['0-5', '6-10', '11-20', '21-50', '51-100', '101-200']
+data_df['Likes Binned'] = pd.cut(data_df['Likes Received (per post)'], bins=bins, labels=labels)
 
-#8  What is the state-wise distribution of sleep quality impact from social media use? 
-plt.figure(figsize=(10, 6))
-sns.heatmap(data_df[['Self Confidence Impact (1-10)', 'Anxiety Levels (1-10)']].corr(), annot=True, cmap='coolwarm')
-plt.title('Correlation between Self-Confidence Impact and Anxiety Level')
+average_anxiety = data_df.groupby('Likes Binned')['Anxiety Levels (1-10)'].mean()
 
-#9  Are there significant differences in social media addiction rates across different countries? 
-plt.figure(figsize=(10, 6))
-sns.scatterplot(x='Self Confidence Impact (1-10)', y='Sleep Quality Impact (1-10)', data=data_df)
-plt.title('Self-Confidence Impact vs Sleep Quality')
-plt.xlabel('Self Confidence Impact (1-10)')
-plt.ylabel('Sleep Quality Impact (1-10)')
+plt.figure(figsize=(8, 8))
+plt.pie(average_anxiety, labels=average_anxiety.index, autopct='%1.1f%%', startangle=140, colors=sns.color_palette("Set2"))
+plt.title('Average Social Anxiety Levels by Number of Comments Received', fontsize=16)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
-#10 How does the frequency of social media use vary across people living in urban and rural areas? 
-plt.figure(figsize=(10, 6))
-sns.countplot(x='State', hue='Frequency of SM Use', data=data_df)
-plt.title('Proportions of Daily vs Monthly Social Media Users by State')
-plt.xlabel('State')
-plt.ylabel('Count')
-plt.legend(title='Frequency of SM Use')
+plt.grid(True, linestyle='--', alpha=0.7)
 
-#11 What is the correlation between self-confidence impact and anxiety level? 
-plt.figure(figsize=(10, 6))
-sns.scatterplot(data=data_df, x='Self Confidence Impact (1-10)', y='Anxiety Levels (1-10)')
-plt.title('Correlation between Self-Confidence Impact and Anxiety Level')
-plt.xlabel('Self Confidence Impact')
-plt.ylabel('Anxiety Level')
-
-#12 How does self-confidence level affect sleep quality? 
-plt.figure(figsize=(12, 6))
-sns.boxplot(data=data_df, x='Self Confidence Impact (1-10)', y='Sleep Quality Impact (1-10)')
-plt.title('Self-Confidence Level vs. Sleep Quality Impact')
-plt.xlabel('Self Confidence Impact')
-plt.ylabel('Sleep Quality Impact')
-plt.xticks(rotation=45)
-
-#13 Which states have the highest proportions of daily social media users compared to monthly users? 
-user_counts = data_df.groupby(['State', 'Frequency of SM Use']).size().unstack().fillna(0)
-
-user_proportions = user_counts.div(user_counts.sum(axis=1), axis=0)
-
-user_proportions.plot(kind='bar', stacked=True, figsize=(12, 6))
-plt.title('Proportion of Daily vs. Monthly Social Media Users by State')
-plt.xlabel('State')
-plt.ylabel('Proportion of Users')
-plt.legend(title='Frequency of SM Use', loc='upper right')
-
-#14 Which regions show the most diversity in terms of the number of social media platforms used? 
-plt.figure(figsize=(12, 6))
-sns.countplot(data=data_df, x='Most Used SM Platform', hue='Region')
-plt.title('Diversity of Social Media Platforms Used by Region')
-plt.xlabel('Most Used Social Media Platform')
-plt.ylabel('Count')
-plt.xticks(rotation=45)
-plt.legend(title='Region')
-
-#15 Which states experience the highest frequency of cyberbullying on social media?
-cyberbullying_by_state = data_df.groupby('State')['Cyberbullying Experience (1-10)'].mean().reset_index()
-
-cyberbullying_by_state = cyberbullying_by_state.sort_values(by='Cyberbullying Experience (1-10)', ascending=False)
-
-plt.figure(figsize=(12, 6))
-sns.barplot(data=cyberbullying_by_state, x='State', y='Cyberbullying Experience (1-10)', palette='viridis')
-plt.title('Average Cyberbullying Experience by State')
-plt.xlabel('State')
-plt.ylabel('Average Cyberbullying Experience (1-10)')
-plt.xticks(rotation=45)
-
-#16 How do different states report the impact of social media usage on physical health, such as sleep deprivation or sedentary behavior? 
-health_impact_by_state = data_df.groupby('State')['Physical Health Impact'].mean().reset_index()
-
-health_impact_by_state = health_impact_by_state.sort_values(by='Physical Health Impact', ascending=False)
-
-plt.figure(figsize=(12, 6))
-sns.barplot(data=health_impact_by_state, x='State', y='Physical Health Impact', palette='coolwarm')
-plt.title('Average Physical Health Impact of Social Media Usage by State')
-plt.xlabel('State')
-plt.ylabel('Average Physical Health Impact Score')
-plt.xticks(rotation=45)
-plt.tight_layout() 
-
-#17 How do anxiety levels vary by education level among social media users? 
-plt.figure(figsize=(12, 6))
-sns.boxplot(data=data_df, x='Education Level', y='Anxiety Level', palette='Set2')
-plt.title('Anxiety Levels by Education Level Among Social Media Users')
-plt.xlabel('Education Level')
-plt.ylabel('Anxiety Level (1-10)')
-plt.xticks(rotation=45)
 plt.tight_layout()
 
-#18 How does socioeconomic status influence the likelihood of experiencing anxiety due to social media? 
-#19 How does the frequency of social media use differ between urban and rural areas? 
-#20 Is there a significant relationship between the number of like received on ports and anxiety levels? 
 
