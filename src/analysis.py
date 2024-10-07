@@ -263,12 +263,74 @@ plt.ylabel('Count')
 plt.legend(title='Frequency of SM Use')
 
 #11 What is the correlation between self-confidence impact and anxiety level? 
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=data_df, x='Self Confidence Impact (1-10)', y='Anxiety Levels (1-10)')
+plt.title('Correlation between Self-Confidence Impact and Anxiety Level')
+plt.xlabel('Self Confidence Impact')
+plt.ylabel('Anxiety Level')
+
 #12 How does self-confidence level affect sleep quality? 
+plt.figure(figsize=(12, 6))
+sns.boxplot(data=data_df, x='Self Confidence Impact (1-10)', y='Sleep Quality Impact (1-10)')
+plt.title('Self-Confidence Level vs. Sleep Quality Impact')
+plt.xlabel('Self Confidence Impact')
+plt.ylabel('Sleep Quality Impact')
+plt.xticks(rotation=45)
+
 #13 Which states have the highest proportions of daily social media users compared to monthly users? 
+user_counts = data_df.groupby(['State', 'Frequency of SM Use']).size().unstack().fillna(0)
+
+user_proportions = user_counts.div(user_counts.sum(axis=1), axis=0)
+
+user_proportions.plot(kind='bar', stacked=True, figsize=(12, 6))
+plt.title('Proportion of Daily vs. Monthly Social Media Users by State')
+plt.xlabel('State')
+plt.ylabel('Proportion of Users')
+plt.legend(title='Frequency of SM Use', loc='upper right')
+
 #14 Which regions show the most diversity in terms of the number of social media platforms used? 
-#15 Which states experience the highest frequency of cyberbullying on social media? 
+plt.figure(figsize=(12, 6))
+sns.countplot(data=data_df, x='Most Used SM Platform', hue='Region')
+plt.title('Diversity of Social Media Platforms Used by Region')
+plt.xlabel('Most Used Social Media Platform')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.legend(title='Region')
+
+#15 Which states experience the highest frequency of cyberbullying on social media?
+cyberbullying_by_state = data_df.groupby('State')['Cyberbullying Experience (1-10)'].mean().reset_index()
+
+cyberbullying_by_state = cyberbullying_by_state.sort_values(by='Cyberbullying Experience (1-10)', ascending=False)
+
+plt.figure(figsize=(12, 6))
+sns.barplot(data=cyberbullying_by_state, x='State', y='Cyberbullying Experience (1-10)', palette='viridis')
+plt.title('Average Cyberbullying Experience by State')
+plt.xlabel('State')
+plt.ylabel('Average Cyberbullying Experience (1-10)')
+plt.xticks(rotation=45)
+
 #16 How do different states report the impact of social media usage on physical health, such as sleep deprivation or sedentary behavior? 
+health_impact_by_state = data_df.groupby('State')['Physical Health Impact'].mean().reset_index()
+
+health_impact_by_state = health_impact_by_state.sort_values(by='Physical Health Impact', ascending=False)
+
+plt.figure(figsize=(12, 6))
+sns.barplot(data=health_impact_by_state, x='State', y='Physical Health Impact', palette='coolwarm')
+plt.title('Average Physical Health Impact of Social Media Usage by State')
+plt.xlabel('State')
+plt.ylabel('Average Physical Health Impact Score')
+plt.xticks(rotation=45)
+plt.tight_layout() 
+
 #17 How do anxiety levels vary by education level among social media users? 
+plt.figure(figsize=(12, 6))
+sns.boxplot(data=data_df, x='Education Level', y='Anxiety Level', palette='Set2')
+plt.title('Anxiety Levels by Education Level Among Social Media Users')
+plt.xlabel('Education Level')
+plt.ylabel('Anxiety Level (1-10)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+
 #18 How does socioeconomic status influence the likelihood of experiencing anxiety due to social media? 
 #19 How does the frequency of social media use differ between urban and rural areas? 
 #20 Is there a significant relationship between the number of like received on ports and anxiety levels? 
