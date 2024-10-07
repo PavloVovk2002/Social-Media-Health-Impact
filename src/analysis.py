@@ -7,6 +7,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
+import os
+
+clean_data = os.path.join('data/cleaned/South_East_Asia_Social_Media_Health_cleaned.csv')
+data_df = pd.read_csv(clean_data)
 
 #1 What is the distribution of daily social media usage across different age groups?, 3, 22
 sns.boxplot(x='Age Group', y='Daily SM Usage (hrs)', data=data_df)
@@ -199,8 +203,18 @@ plt.title('Shares Received vs Anxiety Levels')
 #Part 2
 
 #1  What are the statistics for the data? 
-#2  What is the most used social media platform? 
+statistics_summary = data_df.describe()
+print(statistics_summary)
+
+#2  What is the most used social media platform?
+most_used_social_media_platform = data_df['Most Used SM Platform'].describe()
+print('Most Commonly Used Social Media Platform:')
+print(most_used_social_media_platform)
+
 #3  How does the average number of shares per post differ across states? 
+sns.lineplot(x='Shares Received (per post)', y='State', data=data_df)
+plt.title('Shares Received on post by state')
+
 #5  What age group experience peer comparison the most? 
 #6  How often does a person with a certain socioeconomic status use social media? 
 #7  How do education levels within different states affect social media usage patterns? 
